@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from menu_app.models import Menu, MenuItem
+from tree_menu.menu_app.models import Menu, MenuItem
 
 
 class MenuAdmin(admin.ModelAdmin):
