@@ -4,7 +4,7 @@ from enum import StrEnum
 from django import template
 from django.http import Http404
 
-from tree_menu.menu_app.models import MenuItem
+from menu_app.models import MenuItem
 
 register = template.Library()
 

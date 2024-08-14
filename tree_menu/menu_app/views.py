@@ -1,7 +1,7 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
-from tree_menu.menu_app.models import Menu
+from menu_app.models import Menu
 
 
 def page_not_found(request: HttpRequest, exception) -> HttpResponse:
