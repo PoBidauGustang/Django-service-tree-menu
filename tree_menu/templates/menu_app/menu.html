@@ -1,0 +1,11 @@
+
+{% load custom_tags %}
+<ul>
+  {% for sub_menu_name, sub_menu_item in menu.items %}
+    {% if not sub_menu_item.sub_tree %}
+      <li>
+        <a href={% url 'draw_sub_menu' sub_menu_item.path %}>{{ sub_menu_item.menu_item.name }}
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>

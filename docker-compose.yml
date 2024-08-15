@@ -1,0 +1,61 @@
+services:
+
+  tree_menu_app:
+    container_name: tree_menu
+    restart: always
+    build:
+      context: .
+      dockerfile: ./tree_menu/Dockerfile
+    env_file: .env
+    volumes:
+      - static:/home/app/web/staticfiles
+      - media:/home/app/web/mediafiles
+    depends_on:
+      postgres:
+        condition: service_healthy
+    expose:
+      - ${APP_PORT}
+    networks:
+      - services
+
+  postgres:
+    container_name: ${DB_HOST}
+    image: postgres:${POSTGRES_VERSION}
+    restart: always
+    env_file: .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -h ${DB_HOST}" ]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    networks:
+      - services
+
+  nginx:
+    image: nginx:${NGINX_VERSION}
+    container_name: gateway
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - static:/home/app/web/staticfiles
+      - media:/home/app/web/mediafiles
+    restart: unless-stopped
+    depends_on:
+      - tree_menu_app
+    ports:
+      - "443:443"
+      - "80:80"
+    networks:
+      - services
+
+volumes:
+  postgres_data:
+  static:
+  media:
+
+networks:
+  services:

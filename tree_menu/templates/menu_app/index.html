@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+{% block title %}
+  Главная страница
+{% endblock %}
+{% block main %}
+  {% if main_menu_items %}
+    <ul>
+      {% for main_menu_item in main_menu_items %}
+        <li><a href='{{ main_menu_item.slug }}'>{{ main_menu_item.name }}</li>
+      {% endfor %}
+    </ul>
+    {% elif main_menu_slug %}
+    {% draw_menu_helper main_menu_slug sub_menu_slugs %}
+  {% endif %}
+  <h3><a href={% url 'main_menu' %}>В главное меню</h3>
+{% endblock %}
