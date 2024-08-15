@@ -139,5 +139,3 @@ def draw_menu_helper(
             current_path=current_path,
         )
     }
-    # print(f"MAIN TEST RESULT = {result}\n\n")
-    # return result

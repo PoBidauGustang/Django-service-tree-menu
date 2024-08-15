@@ -36,7 +36,7 @@ Django сервис: древовидное меню
     git clone https://github.com/PoBidauGustang/test_case_uptrader.git
     ```
 
-* Настройки проекта заданы в .env, в .env_example для примера заданы валидные значения переменных
+* Настройки проекта заданы в .env, в .env.example для примера заданы валидные значения переменных
 
     ```bash
     cd test_case_uptrader && cp .env_example .env
