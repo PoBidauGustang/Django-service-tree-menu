@@ -1,4 +1,4 @@
-# Test-case-UpTrader
+# Django-service-tree-menu
 
 ---
 **Язык программирования:**
@@ -33,13 +33,14 @@ Django сервис: древовидное меню
 * клонировать проект на компьютер
 
     ```bash
-    git clone https://github.com/PoBidauGustang/test_case_uptrader.git
+    git clone https://github.com/PoBidauGustang/Django-service-tree-menu.git
+
     ```
 
 * Настройки проекта заданы в .env, в .env.example для примера заданы валидные значения переменных
 
     ```bash
-    cd test_case_uptrader && cp .env.example .env
+    cd Django-service-tree-menu && cp .env.example .env
     ```
 
 * Запуск миграций для БД и сбор статики привязан к переменной DEBUG=True
